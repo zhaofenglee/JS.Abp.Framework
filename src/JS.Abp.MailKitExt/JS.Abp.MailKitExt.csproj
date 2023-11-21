@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props" />
+	
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>解决发送邮件时邮箱服务器证书问题,把AbpMailKitModule替换AbpMailKitExtModule</Description>
+    <Configurations>Debug;Release;build</Configurations>
+    <Platforms>AnyCPU</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.MailKit" Version="$(VoloAbpPackageVersion)" />
+  </ItemGroup>
+
+</Project>

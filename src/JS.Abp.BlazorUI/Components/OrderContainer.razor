@@ -1,0 +1,43 @@
+﻿<Addons>
+    <Addon AddonType="AddonType.Start">
+        <span class="order-container">
+            <span title="Move up" class="move-up cursor-pointer" @onclick="@MoveUpClickHandler">
+                <i class="fa fa-caret-up fa-2x"></i>
+            </span>
+            <br>
+            <span title="Move down" class="move-down cursor-pointer" @onclick="@MoveDownClickHandler">
+                <i class="fa fa-caret-down fa-2x"></i>
+            </span>
+        </span>
+    </Addon>
+    <Addon AddonType="AddonType.Body">
+        <AddonLabel Style="border-color:transparent;background-color: transparent">
+            @Text
+        </AddonLabel>
+    </Addon>
+</Addons>
+
+@code{
+    [Parameter] public EventCallback<MouseEventArgs> MoveUpClicked { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> MoveDownClicked { get; set; }
+    [Parameter] public string Text { get; set; }
+    /// <summary>
+    /// Handles the item onclick event.
+    /// </summary>
+    /// <param name="eventArgs">Supplies information about a mouse event that is being raised.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    protected async Task MoveUpClickHandler(MouseEventArgs eventArgs)
+    {
+        await MoveUpClicked.InvokeAsync(eventArgs);
+    }
+
+    /// <summary>
+    /// Handles the item onclick event.
+    /// </summary>
+    /// <param name="eventArgs">Supplies information about a mouse event that is being raised.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    protected async Task MoveDownClickHandler(MouseEventArgs eventArgs)
+    {
+        await MoveDownClicked.InvokeAsync(eventArgs);
+    }
+}

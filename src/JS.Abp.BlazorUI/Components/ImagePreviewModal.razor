@@ -1,0 +1,70 @@
+﻿@using JS.Abp.BlazorUI.Localization;
+@using Microsoft.AspNetCore.Components
+@using Microsoft.Extensions.Localization
+@using System.IO
+@inherits Modal
+@inject IStringLocalizer<BlazorUIResource> L
+
+<Modal @ref="_modal">
+    <ModalContent Centered="true" Size="ModalSize.ExtraLarge">
+        <Form id="ImportFileForm">
+            <ModalHeader>
+                <ModalTitle>@L["ImagePreview"]</ModalTitle>
+                <CloseButton Clicked="CloseModal" />
+            </ModalHeader>
+            <ModalBody>
+                <Card>
+                    <CardImage Source="@FileUrl"></CardImage>
+                </Card>
+            </ModalBody>
+            <ModalFooter>
+                <Row></Row>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+
+
+@code {
+
+    [Parameter]
+    public string FileUrl { get; set; } = null;
+    protected Modal? _modal;
+    [Parameter]
+    public EventCallback<byte[]> Changed { get; set; }
+    FileEdit fileEdit;
+
+
+    public ImagePreviewModal()
+    {
+    }
+    public virtual async Task OpenAsync()
+    {
+        try
+        {
+            this.StateHasChanged();
+            await InvokeAsync(_modal.Show);
+
+        }
+        catch (Exception ex)
+        {
+            //await HandleErrorAsync(ex);
+        }
+    }
+
+    protected virtual Task ClosingModal(ModalClosingEventArgs eventArgs)
+    {
+        eventArgs.Cancel = eventArgs.CloseReason == CloseReason.FocusLostClosing;
+        return Task.CompletedTask;
+    }
+    private async Task SubmitModalAsync()
+    {
+        await CloseModal();
+    }
+    protected Task CloseModal()
+    {
+        return InvokeAsync(_modal.Hide);
+    }
+
+
+}

@@ -1,0 +1,81 @@
+﻿@using JS.Abp.BlazorUI.Localization;
+@using Microsoft.AspNetCore.Components
+@using Microsoft.Extensions.Localization
+@using System.IO
+@inherits Modal
+@inject IStringLocalizer<BlazorUIResource> L
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+
+
+<Modal @ref="_modal">
+    <ModalContent Centered="true" Size="ModalSize.Fullscreen">
+        <Form id="ImportFileForm">
+            <ModalHeader>
+                <ModalTitle>@L["PdfPreview"]</ModalTitle>
+                <CloseButton Clicked="CloseModal" />
+            </ModalHeader>
+            @if (!string.IsNullOrWhiteSpace(PdfContent))
+            {
+                <div class="box">
+                    <iframe width="100%" src="@PdfContent" scrolling="auto" frameborder="0" style="width: 100%; height: 100%" />
+                </div>
+            }
+             
+        </Form>
+    </ModalContent>
+</Modal>
+
+
+@code {
+
+    [Parameter]
+    public string PdfContent { get; set; } = null;
+    protected Modal? _modal;
+    public IAbpUtilsService abpUtilsService { get; set; }
+    public PdfPreviewModal()
+    {
+    }
+    public virtual async Task OpenAsync()
+    {
+        try
+        {
+            await InvokeAsync(StateHasChanged);
+            await InvokeAsync(_modal.Show);
+           
+
+        }
+        catch (Exception ex)
+        {
+            //await HandleErrorAsync(ex);
+        }
+    }
+
+    protected virtual Task ClosingModal(ModalClosingEventArgs eventArgs)
+    {
+        eventArgs.Cancel = eventArgs.CloseReason == CloseReason.FocusLostClosing;
+        return Task.CompletedTask;
+    }
+    private async Task SubmitModalAsync()
+    {
+        await CloseModal();
+    }
+    protected Task CloseModal()
+    {
+        return InvokeAsync(_modal.Hide);
+    }
+   
+   
+}

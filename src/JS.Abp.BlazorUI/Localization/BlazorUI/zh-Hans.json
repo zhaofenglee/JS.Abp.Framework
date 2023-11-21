@@ -1,0 +1,11 @@
+﻿{
+  "culture": "zh-Hans",
+  "texts": {
+    "ImportFile": "导入文件",
+    "ImagePreview": "图片预览",
+    "PdfPreview": "Pdf预览",
+    "Personalization": "个性化",
+    "Choose": "选择",
+    "Row": "行号"
+  }
+}

@@ -1,0 +1,11 @@
+﻿{
+  "culture": "en",
+  "texts": {
+    "ImportFile": "Import File",
+    "ImagePreview": "Image Preview",
+    "PdfPreview": "Pdf Preview",
+    "Personalization": "Personalization",
+    "Choose": "Choose",
+    "Row": "Row"
+  }
+}

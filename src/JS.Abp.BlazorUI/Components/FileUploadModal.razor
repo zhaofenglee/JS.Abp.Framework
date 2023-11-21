@@ -1,0 +1,98 @@
+@using Microsoft.AspNetCore.Components
+@using Microsoft.Extensions.Localization
+@using System.IO
+@using global::Localization.Resources.AbpUi
+@inherits Modal
+@inject IStringLocalizer<AbpUiResource> L
+
+<Modal @ref="_modal" Closing="@ClosingModal">
+    <ModalContent Centered="true">
+        <Form id="ImportFileForm">
+            <ModalHeader>
+                <ModalTitle>@L["ImportFile"]</ModalTitle>
+                <CloseButton Clicked="CloseModal" />
+            </ModalHeader>
+            <ModalBody>
+                <FileEdit @ref="@fileEdit" Filter="@Filter" AutoReset="false" Changed="@OnChanged" />
+            </ModalBody>
+            <ModalFooter>
+                <Row></Row>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+
+
+@code {
+
+    [Parameter]
+    public string Filter { get; set; } = null;
+    protected Modal? _modal;
+    [Parameter]
+    public EventCallback<byte[]> Changed { get; set; }
+    FileEdit fileEdit;
+    // private readonly IStringLocalizer<BlazorUIResource> _localizer;
+    //
+    // public FileUploadModal(IStringLocalizer<BlazorUIResource> localizer)
+    // {
+    //     _localizer = localizer;
+    //     var str = _localizer["ImportFile"];
+    // }
+    public virtual async Task OpenAsync()
+    {
+        try
+        {
+            await InvokeAsync(_modal.Show);
+
+        }
+        catch (Exception ex)
+        {
+            //await HandleErrorAsync(ex);
+        }
+    }
+
+    protected virtual Task ClosingModal(ModalClosingEventArgs eventArgs)
+    {
+        eventArgs.Cancel = eventArgs.CloseReason == CloseReason.FocusLostClosing;
+        return Task.CompletedTask;
+    }
+    private async Task SubmitModalAsync()
+    {
+
+
+        await CloseModal();
+    }
+    protected Task CloseModal()
+    {
+        return InvokeAsync(_modal.Hide);
+    }
+    string fileContent;
+    async Task OnChanged( FileChangedEventArgs e )
+    {
+        try
+        {
+            var file = e.Files.FirstOrDefault();
+            if (file == null)
+            {
+                return;
+            }
+
+            using (MemoryStream result = new MemoryStream())
+            {
+                await file.OpenReadStream(long.MaxValue).CopyToAsync(result);
+                await Changed.InvokeAsync(result.ToArray());
+                await fileEdit.Reset().AsTask();
+                await CloseModal();
+            }
+
+        }
+        catch (Exception exc)
+        {
+            Console.WriteLine(exc.Message);
+        }
+        finally
+        {
+            this.StateHasChanged();
+        }
+    }
+}
