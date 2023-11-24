@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;net7.0</TargetFrameworks>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+        <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.Core" Version="$(VoloAbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.Settings" Version="$(VoloAbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.Localization" Version="$(VoloAbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.VirtualFileSystem" Version="$(VoloAbpPackageVersion)" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Remove="Localization\*.json" />
+        <EmbeddedResource Include="Localization\*.json" />
+    </ItemGroup>
+
+</Project>

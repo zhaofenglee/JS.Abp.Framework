@@ -1,0 +1,13 @@
+{
+  "culture": "en",
+  "texts": {
+    "DisplayName:AISettingNames.OpenAI.ApiKey": "OpenAI API Key",
+    "Description:AISettingNames.OpenAI.ApiKey": "OpenAI API Key",
+    "DisplayName:AISettingNames.OpenAI.Proxy": "Proxy",
+    "Description:AISettingNames.OpenAI.Proxy": "Proxy",
+    "DisplayName:AISettingNames.OpenAI.Model": "Model",
+    "Description:AISettingNames.OpenAI.Model": "Model",
+    "DisplayName:AISettingNames.DashScope.ApiKey": "DashScope API Key",
+    "Description:AISettingNames.DashScope.ApiKey": "DashScope API Key"
+  }
+}

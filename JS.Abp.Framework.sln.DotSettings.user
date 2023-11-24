@@ -1,16 +1,8 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=68f9dc4f_002Da496_002D4773_002D9f36_002Da62af51f3c31/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Should_Set_Get_And_Remove_Cache_Items" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::A25CD4AB-913F-4178-8288-7AC15DC3A885::net7.0::JS.Abp.CachingExt.Tests.CachingProvider_Test.Should_Set_Get_And_Remove_Cache_Items&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::A25CD4AB-913F-4178-8288-7AC15DC3A885::net7.0::JS.Abp.CachingExt.Tests.CachingProvider_Test.Should_Add_Items&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::A25CD4AB-913F-4178-8288-7AC15DC3A885::net7.0::JS.Abp.CachingExt.Tests.CachingProvider_Test.Should_AddMany_Items&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::E55FE386-9C10-4435-8CC9-D36E20180325::net6.0::JS.Abp.RestSharp.Tests.RestSharpManagerTest.Execute_Test1&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9922707e_002D3c79_002D44e9_002Dae24_002D6b849fd93923/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="&amp;lt;test&amp;gt; 中的所有测试" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="D:\Abp\JS.Abp\framework" Presentation="&amp;lt;test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d42f21d4_002D0392_002D41cd_002D8329_002D8df7d20ab8b4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::A25CD4AB-913F-4178-8288-7AC15DC3A885::net7.0::JS.Abp.CachingExt.Tests.CachingProvider_Test.Should_Set_Get_And_Remove_Cache_Items&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::A25CD4AB-913F-4178-8288-7AC15DC3A885::net7.0::JS.Abp.CachingExt.Tests.CachingProvider_Test.Should_Add_Items&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::E55FE386-9C10-4435-8CC9-D36E20180325::net6.0::JS.Abp.RestSharp.Tests.RestSharpManagerTest.Execute_Test1&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d42f21d4_002D0392_002D41cd_002D8329_002D8df7d20ab8b4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="D:\Abp\JS.Abp\framework" Presentation="&amp;lt;test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -1,7 +1,6 @@
 # JS.Abp.Framework
 Abp Framework for ASP.NET Core
 
-
 ## JS.Abp.BarCode
 仅需几行代码即可生成条码
 
@@ -16,3 +15,9 @@ Abp Framework for ASP.NET Core
 
 ## JS.Abp.RestSharp
 RestSharp扩展
+
+## JS.Abp.AI.OpenAI
+OpenAI ChatGpt第三方组件请求封装
+
+## JS.Abp.AI.DashScope
+阿里DashScopeHttp请求封装

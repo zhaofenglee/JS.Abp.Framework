@@ -1,16 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
     <Import Project="..\..\common.props" />
     
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;netstandard2.1;net7.0</TargetFrameworks>
-        <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.Core" Version="$(VoloAbpPackageVersion)" />
-        <PackageReference Include="RestSharp" Version="108.0.1" />
+        <ProjectReference Include="..\JS.Abp.AI\JS.Abp.AI.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.Json.Abstractions" Version="7.4.0" />
+        <PackageReference Include="Betalgo.OpenAI" Version="7.2.0" />
     </ItemGroup>
 
 </Project>
