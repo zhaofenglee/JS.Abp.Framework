@@ -8,6 +8,7 @@
         <PackageId>JS.Abp.CachingExt</PackageId>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     </PropertyGroup>
     
     <ItemGroup>

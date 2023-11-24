@@ -1,4 +1,5 @@
 using Volo.Abp.Testing;
+using Shouldly;
 
 namespace JS.Abp.CachingExt.Tests;
 
@@ -13,6 +14,7 @@ public class CachingProvider_Test: AbpIntegratedTest<AbpCachingExtTestModule>
         caching.SetString(cacheKey, "test");
         //Get
         var cacheItem = caching.GetString(cacheKey);
+        cacheItem.ShouldBe("test");
         //Remove    
         caching.Remove(cacheKey);
         
@@ -22,6 +24,7 @@ public class CachingProvider_Test: AbpIntegratedTest<AbpCachingExtTestModule>
         caching.Set<PersonCacheItem>(cacheKey2,personCacheItem);
         //Get
         var cacheItem2 = caching.Get<PersonCacheItem>(cacheKey2);
+        cacheItem2.Name.ShouldBe("test");
         //Remove    
         caching.Remove(cacheKey2);
        
@@ -30,13 +33,14 @@ public class CachingProvider_Test: AbpIntegratedTest<AbpCachingExtTestModule>
         caching.SetMany<PersonCacheItem>(cacheKey3,new PersonCacheItem("test1"));
         
         //Get
-        var cacheItem3 = caching.Get<List<PersonCacheItem>>(cacheKey3);
-        
-        //Add
+        var cacheItem3 = caching.GetMany<PersonCacheItem>(cacheKey3);
+        cacheItem3.Count.ShouldBe(1);
+        //Add 
         caching.SetMany<PersonCacheItem>(cacheKey3,new PersonCacheItem("test2"));
         
         //Get
-        var cacheItem4 = caching.Get<List<PersonCacheItem>>(cacheKey3);
+        cacheItem3 = caching.GetMany<PersonCacheItem>(cacheKey3);
+        cacheItem3.Count.ShouldBe(2);
         
     }
     

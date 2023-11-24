@@ -205,8 +205,8 @@ public class CachingProvider:ICachingProvider
         }
         else
         {
-            var items =  JsonSerializer.Deserialize<List<DynamicCacheItem>>(item.Value);
-            return items == null ? default : items.Select(x=>JsonSerializer.Deserialize<T>(x.Value)).ToList();
+            var items =  JsonSerializer.Deserialize<List<T>>(item.Value);
+            return items.ToList();
             
         }
         
