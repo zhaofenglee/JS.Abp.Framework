@@ -10,6 +10,12 @@ internal class AISettingProvider: SettingDefinitionProvider
     {
         context.Add(
             new SettingDefinition(
+                AISettingNames.OpenAI.BaseDomain,
+                "https://api.openai.com/",
+                L("DisplayName:AISettingNames.OpenAI.BaseDomain"),
+                L("Description:AISettingNames.OpenAI.BaseDomain")),
+            
+            new SettingDefinition(
                 AISettingNames.OpenAI.ApiKey,
                 "sk-",
                 L("DisplayName:AISettingNames.OpenAI.ApiKey"),

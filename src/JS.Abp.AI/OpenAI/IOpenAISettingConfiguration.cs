@@ -2,6 +2,7 @@
 
 public interface IOpenAISettingConfiguration: IAISettingConfiguration
 {
-    Task<string> GetProxyAsync();
+    Task<string?> GetBaseDomainAsync();
+    Task<string?> GetProxyAsync();
     
 }

@@ -30,8 +30,9 @@ public class OpenAIChatProviderTest: AbpIntegratedTest<AbpAIOpenAITestModule>
     private  OpenAIChatProvider CreateOpenAIChat()
     {
         var config = Substitute.For<IOpenAISettingConfiguration>();
-        config.GetApiKeyAsync().Returns("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");
-        config.GetProxyAsync().Returns("http://127.0.0.1:10809");
+        config.GetBaseDomainAsync().Returns("https://service-o1vilvju-1306193884.usw.tencentapigw.com/");
+        config.GetApiKeyAsync().Returns("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");
+        //config.GetProxyAsync().Returns("http://127.0.0.1:10809");
         var json = GetRequiredService<IJsonSerializer>();
         var openaiChat = new OpenAIChatProvider(config,json);
         return openaiChat;

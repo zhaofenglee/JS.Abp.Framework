@@ -4,6 +4,8 @@ public class AISettingNames
 {
     public static class OpenAI
     {
+        public const string BaseDomain = "Abp.AI.OpenAI.BaseDomain";
+        
         public const string ApiKey = "Abp.AI.OpenAI.ApiKey";
         
         public const string Proxy = "Abp.AI.OpenAI.Proxy";

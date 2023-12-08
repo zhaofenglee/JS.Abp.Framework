@@ -9,14 +9,14 @@ public class DashScopeSettingConfiguration:AISettingConfiguration,IDashScopeSett
     {
     }
     
-    public override Task<string> GetApiKeyAsync()
+    public override Task<string?> GetApiKeyAsync()
     {
-        return GetNotEmptySettingValueAsync(AISettingNames.DashScope.ApiKey);
+        return GetOrNullSettingValueAsync(AISettingNames.DashScope.ApiKey);
     }
     
-    public override Task<string> GetModelAsync()
+    public override Task<string?> GetModelAsync()
     {
-        return GetNotEmptySettingValueAsync(AISettingNames.DashScope.Model);
+        return GetOrNullSettingValueAsync(AISettingNames.DashScope.Model);
     }
    
 }

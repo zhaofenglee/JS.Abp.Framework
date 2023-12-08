@@ -8,19 +8,23 @@ public class OpenAISettingConfiguration:AISettingConfiguration,IOpenAISettingCon
     public OpenAISettingConfiguration(ISettingProvider settingProvider) : base(settingProvider)
     {
     }
-
-    public override Task<string> GetApiKeyAsync()
+    public Task<string?> GetBaseDomainAsync()
     {
-        return GetNotEmptySettingValueAsync(AISettingNames.OpenAI.ApiKey);
+        return GetOrNullSettingValueAsync(AISettingNames.OpenAI.BaseDomain);
     }
 
-    public Task<string> GetProxyAsync()
+    public override Task<string?> GetApiKeyAsync()
+    {
+        return GetOrNullSettingValueAsync(AISettingNames.OpenAI.ApiKey);
+    }
+
+    public Task<string?> GetProxyAsync()
     { 
-        return GetNotEmptySettingValueAsync(AISettingNames.OpenAI.Proxy);
+        return GetOrNullSettingValueAsync(AISettingNames.OpenAI.Proxy);
     }
 
-    public override Task<string> GetModelAsync()
+    public override Task<string?> GetModelAsync()
     {
-        return GetNotEmptySettingValueAsync(AISettingNames.OpenAI.Model);
+        return GetOrNullSettingValueAsync(AISettingNames.OpenAI.Model);
     }
 }

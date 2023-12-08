@@ -10,19 +10,19 @@ public abstract class AISettingConfiguration:IAISettingConfiguration
     {
         SettingProvider = settingProvider;
     }
-    public abstract Task<string> GetApiKeyAsync();
-    public abstract Task<string> GetModelAsync();
+    public abstract Task<string?> GetApiKeyAsync();
+    public abstract Task<string?> GetModelAsync();
    
-    protected async Task<string> GetNotEmptySettingValueAsync(string name)
+    protected async Task<string?> GetOrNullSettingValueAsync(string name)
     {
-        var value = await SettingProvider.GetOrNullAsync(name);
+        return await SettingProvider.GetOrNullAsync(name);
 
-        if (value.IsNullOrEmpty())
-        {
-            throw new AbpException($"Setting value for '{name}' is null or empty!");
-        }
+        // if (value.IsNullOrEmpty())
+        // {
+        //     throw new AbpException($"Setting value for '{name}' is null or empty!");
+        // }
 
-        return value!;
+        // return value!;
     }
 
     

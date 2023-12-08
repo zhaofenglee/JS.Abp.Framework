@@ -62,27 +62,36 @@ public class OpenAIChatProvider:ChatProviderBase,ITransientDependency
     
     private async Task<OpenAIService> BuildOpenAIServiceAsync()
     {
+        var baseDomain = await OpenAIConfiguration.GetBaseDomainAsync();
         var apiKey = await OpenAIConfiguration.GetApiKeyAsync();
-        var porxy = await OpenAIConfiguration.GetProxyAsync();
-        if (porxy.IsNullOrWhiteSpace())
+        var proxy = await OpenAIConfiguration.GetProxyAsync();
+        if (proxy.IsNullOrWhiteSpace())
         {
             return new OpenAIService(new OpenAiOptions()
             {
-                ApiKey =  apiKey
+                ApiKey =  apiKey,
+                BaseDomain = baseDomain,
+            },new HttpClient()
+            {
+                Timeout = TimeSpan.FromSeconds(240)
             });
         }
         else
         {
             var handler = new HttpClientHandler()
             {
-                Proxy = new WebProxy(porxy),
+                Proxy = new WebProxy(proxy),
                 UseProxy = true
             };
         
-            var client = new HttpClient(handler);
+            var client = new HttpClient(handler)
+            {
+                Timeout = TimeSpan.FromSeconds(240)
+            };
             return new OpenAIService(new OpenAiOptions()
             {
                 ApiKey =  apiKey,
+                BaseDomain = baseDomain,
             },client);
         }
        

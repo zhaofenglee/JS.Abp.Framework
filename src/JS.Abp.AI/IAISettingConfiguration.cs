@@ -2,6 +2,6 @@
 
 public interface IAISettingConfiguration
 {
-    Task<string> GetApiKeyAsync();
-    Task<string> GetModelAsync();
+    Task<string?> GetApiKeyAsync();
+    Task<string?> GetModelAsync();
 }
