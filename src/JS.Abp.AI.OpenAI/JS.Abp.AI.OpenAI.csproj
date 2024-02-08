@@ -15,7 +15,7 @@
 
     <ItemGroup>
         <PackageReference Include="Volo.Abp.Json.Abstractions" Version="$(VoloAbpPackageVersion)" />
-        <PackageReference Include="Betalgo.OpenAI" Version="7.4.3" />
+        <PackageReference Include="Betalgo.OpenAI" Version="7.4.5" />
     </ItemGroup>
 
 </Project>
