@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JS.Abp.AI.OpenAI", "src\JS.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JS.Abp.AI.OpenAI.Tests", "test\JS.Abp.AI.OpenAI.Tests\JS.Abp.AI.OpenAI.Tests.csproj", "{C0A42098-6858-421D-9BD3-F5FA3784C1F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JS.Abp.FileManagement.Abstractions", "src\JS.Abp.FileManagement.Abstractions\JS.Abp.FileManagement.Abstractions.csproj", "{BCB9530D-2806-41A8-A066-7088758660FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{C0A42098-6858-421D-9BD3-F5FA3784C1F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0A42098-6858-421D-9BD3-F5FA3784C1F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0A42098-6858-421D-9BD3-F5FA3784C1F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCB9530D-2806-41A8-A066-7088758660FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCB9530D-2806-41A8-A066-7088758660FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCB9530D-2806-41A8-A066-7088758660FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCB9530D-2806-41A8-A066-7088758660FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +115,7 @@ Global
 		{D1E48784-F677-47D7-8F9E-7D1AE22B1420} = {BB248EBB-AF5B-4D27-B187-1347E98E2BA7}
 		{AC1FEACC-DAA6-4CC6-B106-3FC7E828DFF3} = {9610CE9C-E284-41E0-B08D-D83A49CBB98D}
 		{C0A42098-6858-421D-9BD3-F5FA3784C1F8} = {BB248EBB-AF5B-4D27-B187-1347E98E2BA7}
+		{BCB9530D-2806-41A8-A066-7088758660FF} = {9610CE9C-E284-41E0-B08D-D83A49CBB98D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50C1C43C-323B-4E03-93A6-BC97CFC4801B}

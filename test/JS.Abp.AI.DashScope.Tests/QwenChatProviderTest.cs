@@ -25,18 +25,17 @@ public class QwenChatProviderTest: AbpIntegratedTest<AbpAIDashScopeTestModule>
             }
         };
 
-        var chat = CreateQwenChat();
-        //var chat = GetRequiredService<QwenChatProvider>();
-        var result = await chat.CreateCompletion("qwen-max", chatMessages,1500);
-        result.ShouldNotBeNullOrWhiteSpace();
-        result.ShouldContain("成功");
+        // var chat = CreateQwenChat();
+        // var result = await chat.CreateCompletion("qwen-max", chatMessages,1500);
+        // result.ShouldNotBeNullOrWhiteSpace();
+        // result.ShouldContain("成功");
     }
 
 
     private  QwenChatProvider CreateQwenChat()
     {
         var config = Substitute.For<IDashScopeSettingConfiguration>();
-        config.GetApiKeyAsync().Returns("sk-ac9193111ee64ff2852442159199552b");
+        config.GetApiKeyAsync().Returns("sk-");
         var restSharp = GetRequiredService<IRestSharpManager>();
         var json = GetRequiredService<IJsonSerializer>();
         var qwenChat = new QwenChatProvider(config,restSharp,json);
