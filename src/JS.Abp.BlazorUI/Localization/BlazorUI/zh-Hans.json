@@ -6,6 +6,8 @@
     "PdfPreview": "Pdf预览",
     "Personalization": "个性化",
     "Choose": "选择",
-    "Row": "行号"
+    "Row": "行号",
+    "UploadFile": "上传附件",
+    "DownloadTemplateFile": "下载模板文件"
   }
 }

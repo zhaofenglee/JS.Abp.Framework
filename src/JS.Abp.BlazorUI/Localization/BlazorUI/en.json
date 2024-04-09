@@ -6,6 +6,8 @@
     "PdfPreview": "Pdf Preview",
     "Personalization": "Personalization",
     "Choose": "Choose",
-    "Row": "Row"
+    "Row": "Row",
+    "UploadFile": "Upload file",
+    "DownloadTemplateFile": "Download template file"
   }
 }
