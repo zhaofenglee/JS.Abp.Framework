@@ -7,6 +7,13 @@ Abp Framework for ASP.NET Core
 ## JS.Abp.Blazor.UI
 在Blazorise基础上封装的一些组件
 
+### 附件上传&下载模板
+```
+@using JS.Abp.BlazorUI.Components
+
+<FileUploadModal @ref="FileUploadModal" Filter=".xlsx" OnFileUploaded="ImportExcelAsync" OnDownloadTemplateFile="DownloadAsExcelTemplateAsync" />
+```
+
 ## JS.Abp.CachingExt
 缓存扩展
 

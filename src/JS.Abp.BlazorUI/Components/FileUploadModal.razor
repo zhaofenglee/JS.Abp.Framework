@@ -9,14 +9,21 @@
     <ModalContent Centered="true">
         <Form id="ImportFileForm">
             <ModalHeader>
-                <ModalTitle>@L["ImportFile"]</ModalTitle>
+                <ModalTitle>@L["UploadFile"]</ModalTitle>
                 <CloseButton Clicked="CloseModal" />
             </ModalHeader>
             <ModalBody>
                 <FileEdit @ref="@fileEdit" Filter="@Filter" AutoReset="false" Changed="@OnChanged" />
             </ModalBody>
             <ModalFooter>
-                <Row></Row>
+                 <Button Color="Color.Secondary"
+                                          Clicked="CloseModal">
+                                      @L["Cancel"]
+                                  </Button>
+                                  <Button Color="Color.Secondary"
+                                          Clicked="OnDownloadTemplateFileAsync">
+                                      @L["DownloadTemplateFile"]
+                                  </Button>
             </ModalFooter>
         </Form>
     </ModalContent>
@@ -27,21 +34,20 @@
 
     [Parameter]
     public string Filter { get; set; } = null;
-    protected Modal? _modal;
+    private Blazorise.Modal _modal { get; set; }
+    [Parameter]
+    public EventCallback<byte[]> OnFileUploaded { get; set; }
     [Parameter]
     public EventCallback<byte[]> Changed { get; set; }
+    [Parameter]
+    public EventCallback OnDownloadTemplateFile { get; set; }
     FileEdit fileEdit;
-    // private readonly IStringLocalizer<BlazorUIResource> _localizer;
-    //
-    // public FileUploadModal(IStringLocalizer<BlazorUIResource> localizer)
-    // {
-    //     _localizer = localizer;
-    //     var str = _localizer["ImportFile"];
-    // }
+    
     public virtual async Task OpenAsync()
     {
         try
         {
+            await fileEdit.Reset().AsTask();
             await InvokeAsync(_modal.Show);
 
         }
@@ -66,7 +72,7 @@
     {
         return InvokeAsync(_modal.Hide);
     }
-    string fileContent;
+    
     async Task OnChanged( FileChangedEventArgs e )
     {
         try
@@ -80,9 +86,13 @@
             using (MemoryStream result = new MemoryStream())
             {
                 await file.OpenReadStream(long.MaxValue).CopyToAsync(result);
-                await Changed.InvokeAsync(result.ToArray());
+                await _modal.Hide();
+                await OnFileUploaded.InvokeAsync(result.ToArray());
+                
+                // await Changed.InvokeAsync(result.ToArray());
                 await fileEdit.Reset().AsTask();
-                await CloseModal();
+                // await CloseModal();
+                
             }
 
         }
@@ -94,5 +104,11 @@
         {
             this.StateHasChanged();
         }
+    }
+    
+    async Task OnDownloadTemplateFileAsync()
+    {
+        await OnDownloadTemplateFile.InvokeAsync();
+        this.StateHasChanged();
     }
 }

@@ -48,7 +48,7 @@ public class AbpBlazorUIModule: AbpModule
             //     .AddVirtualJson("/Localization/BlazorUI");
             options.Resources
                 .Get<AbpUiResource>()
-                .AddVirtualJson("/Localization/Identity");
+                .AddVirtualJson("/Localization/BlazorUI");
 
         });
         // Configure<AbpExceptionLocalizationOptions>(options =>
