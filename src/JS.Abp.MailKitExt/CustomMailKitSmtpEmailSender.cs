@@ -3,12 +3,13 @@ using Microsoft.Extensions.Options;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Emailing.Smtp;
 using Volo.Abp.MailKit;
+using Volo.Abp.MultiTenancy;
 
 namespace JS.Abp.MailKitExt
 {
     public class CustomMailKitSmtpEmailSender : MailKitSmtpEmailSender
     {
-        public CustomMailKitSmtpEmailSender(ISmtpEmailSenderConfiguration smtpConfiguration, IBackgroundJobManager backgroundJobManager, IOptions<AbpMailKitOptions> abpMailKitConfiguration) : base(smtpConfiguration, backgroundJobManager, abpMailKitConfiguration)
+        public CustomMailKitSmtpEmailSender(ICurrentTenant currentTenant,ISmtpEmailSenderConfiguration smtpConfiguration, IBackgroundJobManager backgroundJobManager, IOptions<AbpMailKitOptions> abpMailKitConfiguration) : base(currentTenant,smtpConfiguration, backgroundJobManager, abpMailKitConfiguration)
         {
 
         }
