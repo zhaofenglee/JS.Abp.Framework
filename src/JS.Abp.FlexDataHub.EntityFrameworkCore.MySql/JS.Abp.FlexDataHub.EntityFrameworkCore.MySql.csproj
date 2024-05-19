@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;</TargetFrameworks>
+        <Nullable>enable</Nullable>
+        <RootNamespace>JS.Abp.FlexDataHub</RootNamespace>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(VoloAbpPackageVersion)" />
+        <ProjectReference Include="..\JS.Abp.FlexDataHub.Abstractions\JS.Abp.FlexDataHub.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>

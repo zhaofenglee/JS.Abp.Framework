@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\..\common.props" />
+    
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;net8.0</TargetFrameworks>
+        <RootNamespace>JS.Abp.FlexDataHub</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="Volo.Abp.Core" Version="$(VoloAbpPackageVersion)" />
+    </ItemGroup>
+
+</Project>
