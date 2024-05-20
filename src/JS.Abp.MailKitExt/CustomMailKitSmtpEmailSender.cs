@@ -9,7 +9,7 @@ namespace JS.Abp.MailKitExt
 {
     public class CustomMailKitSmtpEmailSender : MailKitSmtpEmailSender
     {
-        public CustomMailKitSmtpEmailSender(ICurrentTenant currentTenant,ISmtpEmailSenderConfiguration smtpConfiguration, IBackgroundJobManager backgroundJobManager, IOptions<AbpMailKitOptions> abpMailKitConfiguration) : base(currentTenant,smtpConfiguration, backgroundJobManager, abpMailKitConfiguration)
+        public CustomMailKitSmtpEmailSender(ISmtpEmailSenderConfiguration smtpConfiguration, IBackgroundJobManager backgroundJobManager, IOptions<AbpMailKitOptions> abpMailKitConfiguration) : base(smtpConfiguration, backgroundJobManager, abpMailKitConfiguration)
         {
 
         }

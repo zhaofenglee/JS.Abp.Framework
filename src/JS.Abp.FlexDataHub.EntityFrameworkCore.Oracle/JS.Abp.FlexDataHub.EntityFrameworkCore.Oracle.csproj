@@ -3,7 +3,7 @@
     <Import Project="..\..\common.props" />
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0;</TargetFrameworks>
+        <TargetFrameworks>net6.0;</TargetFrameworks>
         <Nullable>enable</Nullable>
         <RootNamespace>JS.Abp.FlexDataHub</RootNamespace>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
