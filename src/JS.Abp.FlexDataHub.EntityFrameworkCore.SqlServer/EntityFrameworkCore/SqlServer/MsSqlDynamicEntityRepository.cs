@@ -128,7 +128,7 @@ public class MsSqlDynamicEntityRepository: IMsSqlDynamicEntityRepository
         //var dbContext = await OpenDatabaseConnectionAsync(connectionString, cancellationToken);
         var command = dbContext.Database.GetDbConnection().CreateCommand();
 
-        command.CommandText = commandText +" WHERE 1=1 ";
+        
         command.CommandType = commandType;
         command.Transaction = dbContext.Database.CurrentTransaction?.GetDbTransaction();
         if (extraProperties!=null)
@@ -193,6 +193,14 @@ public class MsSqlDynamicEntityRepository: IMsSqlDynamicEntityRepository
         //     command.Parameters.Add(parameter);
         // }
         command.CommandText += $" {groupBy} {sorting} ";
+        if (!command.CommandText.IsNullOrWhiteSpace())
+        {
+            command.CommandText = commandText +" WHERE 1=1 " + command.CommandText;
+        }
+        else
+        {
+            command.CommandText = commandText;
+        }
         if (Options.LogToConsole)
         {
             Console.WriteLine(command.CommandText);
