@@ -67,7 +67,7 @@ public class OracleDynamicEntityRepository:  IOracleDynamicEntityRepository
     {
         using (var dbContext = await OpenDatabaseConnectionAsync(connectionString, cancellationToken))
         {
-            using (var command = await CreateCommand(dbContext, query, CommandType.Text,extraProperties,cancellationToken))
+            using (var command = await CreateCommand(dbContext, query, CommandType.StoredProcedure,extraProperties,cancellationToken))
             {
                 using (var dataReader = await command.ExecuteReaderAsync(cancellationToken))
                 {
