@@ -197,7 +197,8 @@ public class OracleDynamicEntityRepository:  IOracleDynamicEntityRepository
         command.CommandText += $" {groupBy} {sorting} ";
         if (!command.CommandText.IsNullOrWhiteSpace())
         {
-            command.CommandText = commandText +" WHERE 1=1 " + command.CommandText;
+            // 移除冗余的"WHERE 1=1 AND"
+            command.CommandText = commandText +(" WHERE 1=1" + command.CommandText).Replace("WHERE 1=1 AND","WHERE");
         }
         else
         {
