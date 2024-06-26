@@ -25,5 +25,21 @@ public class MsSqlDynamicEntityRepositoryTest: AbpIntegratedTest<AbpFlexDataHubE
 
 
     }
+
+    [Fact]
+    public async Task ExecuteDynamicProcedureAsyncTest()
+    {
+        var result = await _dynamicEntityRepository.ExecuteDynamicProcedureAsync(
+            connectionString:"Default",
+            query:"SearchAbpAuditLogs",
+            extraProperties: new Dictionary<string, object?>()
+            {
+                {"ApplicationName",""},
+                {"UserName",""}
+            });
+        result.ShouldNotBeNull();
+
+
+    }
     
 }
