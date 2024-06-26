@@ -63,12 +63,12 @@ public class MsSqlDynamicEntityRepository: IMsSqlDynamicEntityRepository
 
     }
 
-    public async Task<IEnumerable<DynamicEntityData>> ExecuteDynamicProcedureAsync(string query, string? connectionString,
+    public async Task<IEnumerable<DynamicEntityData>> ExecuteDynamicProcedureAsync(string? connectionString,string query,
         Dictionary<string, object?>? extraProperties = null, CancellationToken cancellationToken = default)
     {
         using (var dbContext = await OpenDatabaseConnectionAsync(connectionString, cancellationToken))
         {
-            using (var command = await CreateCommand(dbContext,query, CommandType.Text,extraProperties,cancellationToken))
+            using (var command = await CreateCommand(dbContext,query, CommandType.StoredProcedure,extraProperties,cancellationToken))
             {
                 using (var dataReader = await command.ExecuteReaderAsync(cancellationToken))
                 {
@@ -128,7 +128,7 @@ public class MsSqlDynamicEntityRepository: IMsSqlDynamicEntityRepository
         //var dbContext = await OpenDatabaseConnectionAsync(connectionString, cancellationToken);
         var command = dbContext.Database.GetDbConnection().CreateCommand();
 
-        command.CommandText = commandText +" WHERE 1=1 ";
+        
         command.CommandType = commandType;
         command.Transaction = dbContext.Database.CurrentTransaction?.GetDbTransaction();
         if (extraProperties!=null)
@@ -193,6 +193,15 @@ public class MsSqlDynamicEntityRepository: IMsSqlDynamicEntityRepository
         //     command.Parameters.Add(parameter);
         // }
         command.CommandText += $" {groupBy} {sorting} ";
+        if (!command.CommandText.IsNullOrWhiteSpace())
+        {
+            // 移除冗余的"WHERE 1=1 AND"
+            command.CommandText = commandText +(" WHERE 1=1" + command.CommandText).Replace("WHERE 1=1 AND","WHERE");
+        }
+        else
+        {
+            command.CommandText = commandText;
+        }
         if (Options.LogToConsole)
         {
             Console.WriteLine(command.CommandText);

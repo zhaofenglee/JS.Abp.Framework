@@ -71,7 +71,7 @@ public class PostgreSqlDynamicEntityRepository: IPostgreSqlDynamicEntityReposito
         using (var dbContext = await OpenDatabaseConnectionAsync(connectionString, cancellationToken))
         {
             using (var command =
-                   await CreateCommand(dbContext, query, CommandType.Text, extraProperties, cancellationToken))
+                   await CreateCommand(dbContext, query, CommandType.StoredProcedure, extraProperties, cancellationToken))
             {
                 using (var dataReader = await command.ExecuteReaderAsync(cancellationToken))
                 {
@@ -135,7 +135,7 @@ public class PostgreSqlDynamicEntityRepository: IPostgreSqlDynamicEntityReposito
         //var dbContext = await OpenDatabaseConnectionAsync(connectionString, cancellationToken);
         var command = dbContext.Database.GetDbConnection().CreateCommand();
 
-        command.CommandText = commandText + " WHERE 1=1 ";
+        
         command.CommandType = commandType;
         command.Transaction = dbContext.Database.CurrentTransaction?.GetDbTransaction();
 
@@ -198,6 +198,15 @@ public class PostgreSqlDynamicEntityRepository: IPostgreSqlDynamicEntityReposito
             command.CommandText += $" AND {parameters}";
         }
         command.CommandText += $" {groupBy} {sorting} ";
+        if (!command.CommandText.IsNullOrWhiteSpace())
+        {
+            // 移除冗余的"WHERE 1=1 AND"
+            command.CommandText = commandText +(" WHERE 1=1" + command.CommandText).Replace("WHERE 1=1 AND","WHERE");
+        }
+        else
+        {
+            command.CommandText = commandText;
+        }
         if (Options.LogToConsole)
         {
             Console.WriteLine(command.CommandText);
