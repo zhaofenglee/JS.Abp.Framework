@@ -26,6 +26,9 @@ RestSharp扩展
 ## JS.Abp.AI.OpenAI
 OpenAI ChatGpt第三方组件请求封装
 
+## JS.Abp.AI.Azure
+AzureAI 请求封装
+
 ## JS.Abp.AI.DashScope
 阿里DashScopeHttp请求封装
 

@@ -18,4 +18,11 @@ public class AISettingNames
         public const string ApiKey = "Abp.AI.DashScope.ApiKey";
         public const string Model = "Abp.AI.DashScope.Model";
     }
+
+    public static class AzureAI
+    {
+        public const string Endpoint  = "Abp.AI.AzureAI.Endpoint";
+        public const string ApiKey = "Abp.AI.AzureAI.ApiKey";
+        public const string Model = "Abp.AI.AzureAI.Model";
+    }
 }
