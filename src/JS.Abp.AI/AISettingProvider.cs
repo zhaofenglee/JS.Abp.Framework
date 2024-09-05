@@ -39,7 +39,22 @@ internal class AISettingProvider: SettingDefinitionProvider
             new SettingDefinition(AISettingNames.DashScope.Model,
                 "qwen-max",
                 L("DisplayName:AISettingNames.DashScope.Model"),
-                L("Description:AISettingNames.DashScope.Model"),true)
+                L("Description:AISettingNames.DashScope.Model"),true),
+
+        new SettingDefinition(AISettingNames.AzureAI.Endpoint,
+                "https://models.inference.ai.azure.com",
+                L("DisplayName:AISettingNames.AzureAI.Endpoint"),
+                L("Description:AISettingNames.AzureAI.Endpoint"),true),
+
+        new SettingDefinition(AISettingNames.AzureAI.ApiKey,
+                "github_pat",
+                L("DisplayName:AISettingNames.AzureAI.ApiKey"),
+                L("Description:AISettingNames.AzureAI.ApiKey"),false),
+
+        new SettingDefinition(AISettingNames.AzureAI.Model,
+                "gpt-4o-mini",
+                L("DisplayName:AISettingNames.AzureAI.Model"),
+                L("Description:AISettingNames.AzureAI.Model"),true)
             
                 );
     }

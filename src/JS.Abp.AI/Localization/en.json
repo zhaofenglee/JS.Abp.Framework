@@ -8,6 +8,12 @@
     "DisplayName:AISettingNames.OpenAI.Model": "Model",
     "Description:AISettingNames.OpenAI.Model": "Model",
     "DisplayName:AISettingNames.DashScope.ApiKey": "DashScope API Key",
-    "Description:AISettingNames.DashScope.ApiKey": "DashScope API Key"
+    "Description:AISettingNames.DashScope.ApiKey": "DashScope API Key",
+    "DisplayName:AISettingNames.AzureAI.Endpoint": "AzureAI API Endpoint",
+    "DisplayName:AISettingNames.AzureAI.ApiKey": "AzureAI API Key",
+    "DisplayName:AISettingNames.AzureAI.Model": "AzureAI Model",
+    "Description:AISettingNames.AzureAI.Endpoint": "AzureAI API Endpoint",
+    "Description:AISettingNames.AzureAI.ApiKey": "AzureAI API Key",
+    "Description:AISettingNames.AzureAI.Model": "AzureAI Model"
   }
 }
