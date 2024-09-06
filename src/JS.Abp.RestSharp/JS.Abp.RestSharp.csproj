@@ -10,7 +10,7 @@
 
     <ItemGroup>
         <PackageReference Include="Volo.Abp.Core" Version="$(VoloAbpPackageVersion)" />
-        <PackageReference Include="RestSharp" Version="111.4.1" />
+        <PackageReference Include="RestSharp" Version="112.0.0" />
     </ItemGroup>
 
 </Project>
