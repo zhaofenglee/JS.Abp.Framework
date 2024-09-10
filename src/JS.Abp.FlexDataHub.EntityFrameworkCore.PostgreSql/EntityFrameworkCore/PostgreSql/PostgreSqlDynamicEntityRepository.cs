@@ -233,7 +233,8 @@ public class PostgreSqlDynamicEntityRepository: IPostgreSqlDynamicEntityReposito
     {
         var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false);
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddEnvironmentVariables(); // 添加环境变量
 
         return builder.Build();
     }
