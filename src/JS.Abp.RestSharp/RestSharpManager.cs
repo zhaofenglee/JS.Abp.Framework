@@ -12,7 +12,7 @@ public class RestSharpManager: IRestSharpManager,ITransientDependency
         string resource = uri.PathAndQuery;
         var options = new RestClientOptions(baseUrl)
         {
-            MaxTimeout = maxTimeout,
+            Timeout = TimeSpan.FromMilliseconds(maxTimeout),
         };
         var client = new RestClient(options);
         var request = new RestRequest(resource,ConvertMethod(method));
