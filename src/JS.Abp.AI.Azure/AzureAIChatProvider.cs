@@ -1,6 +1,6 @@
 ﻿using Azure;
-using Azure.AI.OpenAI;
-using OpenAI.Chat;
+using Azure.AI.Inference;
+using JS.Abp.AI.DashScope;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Json;
 
@@ -23,31 +23,31 @@ public class AzureAIChatProvider:ChatProviderBase,ITransientDependency
     {
         var endpoint = new Uri(await AzureSettingConfiguration.GetEndpointAsync());
         var credential = new AzureKeyCredential(await AzureSettingConfiguration.GetApiKeyAsync());
-        AzureOpenAIClient azureClient = new(
-            endpoint,
-            credential);
 
-        var client =  azureClient.GetChatClient(modelId);
-        List<ChatMessage> chatMessage = new List<ChatMessage>();
+        var client = new ChatCompletionsClient(endpoint, credential, new ChatCompletionsClientOptions());
+        List<ChatRequestMessage> chatMessage = new List<ChatRequestMessage>();
         foreach (var message in chatMessages)
         {
             if (message.Role.ToLower() == "user")
             {
-                chatMessage.Add(new UserChatMessage(message.Content));
+                chatMessage.Add(new ChatRequestUserMessage(message.Content));
             }
             else
             {
-                chatMessage.Add(new SystemChatMessage(message.Content));
+                chatMessage.Add(new ChatRequestSystemMessage(message.Content));
             }
         }
 
-        var chatCompletionOptions = new ChatCompletionOptions ()
+        var requestOptions = new ChatCompletionsOptions(
+            messages: chatMessage
+        )
         {
+            Model = modelId,
             Temperature = 1,
-            MaxOutputTokenCount = maxTokens
+            MaxTokens = maxTokens
         };
 
-        ChatCompletion completion  = await client.CompleteChatAsync(chatMessage, chatCompletionOptions,cancellationToken);
-        return completion.Content[0].Text;
+        Response<ChatCompletions> response = await client.CompleteAsync(requestOptions);
+        return response.Value.Choices[0].Message.Content;
     }
 }
