@@ -300,12 +300,26 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
                 client.DefaultRequestHeaders.Add(key, headers[key]);
             }
         }
+        var httpContext = _httpContextAccessor.HttpContext;
+        var cookies = httpContext?.Request.Cookies;
+        var token = cookies?["XSRF-TOKEN"];
+        var cookie = (IEnumerable<string?>)httpContext.Request.Headers["Cookie"];
         // Authorization
         if (!client.DefaultRequestHeaders.Contains("Authorization") &&
             _httpContextAccessor.HttpContext?.Request.Headers.TryGetValue("Authorization", out var accessToken) == true)
         {
             client.DefaultRequestHeaders.Add("Authorization", (string?)accessToken ?? string.Empty);
         }
+        else
+        {
+            client.DefaultRequestHeaders.Add("Cookie", cookie);
+        }
+        // Add XSRF-TOKEN if it exists
+        if (!string.IsNullOrEmpty(token))
+        {
+            client.DefaultRequestHeaders.Add("RequestVerificationToken", token);
+        }
+        
         return client;
     }
 
