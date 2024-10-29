@@ -26,7 +26,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <param name="headers">请求头信息</param>
     /// <param name="timeOut">请求超时时间，单位秒</param>
     /// <returns>返回HttpResponseMessage</returns>
-    public async Task<HttpResponseMessage> GetHttpResponseMessageAsync(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
+    public virtual async Task<HttpResponseMessage> GetHttpResponseMessageAsync(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
     {
         var hostName = GetHostName(url);
         using (HttpClient client = CreateHttpClient(hostName, headers, timeOut))
@@ -42,7 +42,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <param name="headers">请求头信息</param>
     /// <param name="timeOut">请求超时时间，单位秒</param>
     /// <returns>返回string</returns>
-    public async Task<string> GetAsync(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
+    public virtual async Task<string> GetAsync(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
     {
         using (HttpResponseMessage response = await GetHttpResponseMessageAsync(url,headers,timeOut))
         {
@@ -66,7 +66,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <param name="headers">请求头信息</param>
     /// <param name="timeOut">请求超时时间，单位秒</param>
     /// <returns>返回T</returns>
-    public async Task<T> GetAsync<T>(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
+    public virtual async Task<T> GetAsync<T>(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
     {
         string responseString = await GetAsync(url, headers, timeOut);
         if (!string.IsNullOrWhiteSpace(responseString))
@@ -82,7 +82,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <summary>
     /// 发起POST异步请求，返回HttpResponseMessage
     /// </summary>
-    public async Task<HttpResponseMessage> PostHttpResponseMessageAsync(string url, string? body, string bodyMediaType = "application/json", Dictionary<string, string>? headers = null, int timeOut = 30)
+    public virtual async Task<HttpResponseMessage> PostHttpResponseMessageAsync(string url, string? body, string bodyMediaType = "application/json", Dictionary<string, string>? headers = null, int timeOut = 30)
     {
         var hostName = GetHostName(url);
         using (HttpClient client = CreateHttpClient(hostName, headers, timeOut))
@@ -101,7 +101,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <param name="headers">请求头信息</param>
     /// <param name="timeOut">请求超时时间，单位秒</param>
     /// <returns>返回string</returns>
-    public async Task<string> PostAsync(string url, string? body,
+    public virtual async Task<string> PostAsync(string url, string? body,
         string bodyMediaType = "application/json",
         Dictionary<string, string>? headers = null,
         int timeOut = 30)
@@ -130,7 +130,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <param name="headers">请求头信息</param>
     /// <param name="timeOut">请求超时时间，单位秒</param>
     /// <returns>返回T</returns>
-    public async Task<T> PostAsync<T>(string url, string? body,
+    public virtual async Task<T> PostAsync<T>(string url, string? body,
         string bodyMediaType = "application/json",
         Dictionary<string, string>? headers = null,
         int timeOut = 30)
@@ -149,7 +149,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <summary>
     /// 发起PUT异步请求，返回HttpResponseMessage
     /// </summary>
-    public async Task<HttpResponseMessage> PutHttpResponseMessageAsync(string url, string? body, string bodyMediaType = "application/json", Dictionary<string, string>? headers = null, int timeOut = 30)
+    public virtual async Task<HttpResponseMessage> PutHttpResponseMessageAsync(string url, string? body, string bodyMediaType = "application/json", Dictionary<string, string>? headers = null, int timeOut = 30)
     {
         var hostName = GetHostName(url);
         using (HttpClient client = CreateHttpClient(hostName, headers, timeOut))
@@ -169,7 +169,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <param name="headers">请求头信息</param>
     /// <param name="timeOut">请求超时时间，单位秒</param>
     /// <returns>返回string</returns>
-    public async Task<string> PutAsync(string url, string? body,
+    public virtual async Task<string> PutAsync(string url, string? body,
         string bodyMediaType = "application/json",
         Dictionary<string, string>? headers = null,
         int timeOut = 30)
@@ -198,7 +198,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <param name="headers">请求头信息</param>
     /// <param name="timeOut">请求超时时间，单位秒</param>
     /// <returns>返回T</returns>
-    public async Task<T> PutAsync<T>(string url, string? body,
+    public virtual async Task<T> PutAsync<T>(string url, string? body,
         string bodyMediaType = "application/json",
         Dictionary<string, string>? headers = null,
         int timeOut = 30)
@@ -217,7 +217,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <summary>
     /// 发起DELETE异步请求，返回HttpResponseMessage
     /// </summary>
-    public async Task<HttpResponseMessage> DeleteHttpResponseMessageAsync(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
+    public virtual async Task<HttpResponseMessage> DeleteHttpResponseMessageAsync(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
     {
         var hostName = GetHostName(url);
         using (HttpClient client = CreateHttpClient(hostName, headers, timeOut))
@@ -233,7 +233,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <param name="headers">请求头信息</param>
     /// <param name="timeOut">请求超时时间，单位秒</param>
     /// <returns>返回string</returns>
-    public async Task<string> DeleteAsync(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
+    public virtual async Task<string> DeleteAsync(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
     {
         using (HttpResponseMessage response = await DeleteHttpResponseMessageAsync(url, headers, timeOut))
         {
@@ -257,7 +257,7 @@ public class HttpRequestService:IHttpRequestService, ITransientDependency
     /// <param name="headers">请求头信息</param>
     /// <param name="timeOut">请求超时时间，单位秒</param>
     /// <returns>返回T</returns>
-    public async Task<T> DeleteAsync<T>(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
+    public virtual async Task<T> DeleteAsync<T>(string url, Dictionary<string, string>? headers = null, int timeOut = 30)
     {
         string responseString = await DeleteAsync(url, headers, timeOut);
         if (!string.IsNullOrWhiteSpace(responseString))
