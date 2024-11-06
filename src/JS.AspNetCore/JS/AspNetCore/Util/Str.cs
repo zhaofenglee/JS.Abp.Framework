@@ -1,6 +1,6 @@
 using System.Security.Cryptography.X509Certificates;
 
-namespace JS.Abp.AspNetCore.Util
+namespace JS.AspNetCore.Util
 {
     public static class Str
     {

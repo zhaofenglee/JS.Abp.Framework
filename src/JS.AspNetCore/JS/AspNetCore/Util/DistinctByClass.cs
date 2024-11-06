@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JS.Abp.AspNetCore.Util
+namespace JS.AspNetCore.Util
 {
     public static class DistinctByClass
     {

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace JS.Abp.AspNetCore.Extensions
+namespace JS.AspNetCore.Extensions
 {
     public static class SameSiteCookiesServiceCollectionExtensions
     {
