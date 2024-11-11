@@ -15,14 +15,15 @@ public class SqliteDynamicEntityRepositoryTest: AbpIntegratedTest<AbpFlexDataHub
     [Fact]
     public async Task ExecuteDynamicQueryAsyncTest()
     {
-        var result = await _dynamicEntityRepository.ExecuteDynamicQueryAsync(
+        var result = (await _dynamicEntityRepository.ExecuteDynamicQueryAsync(
             connectionString:"Default",
             query:"SELECT * FROM AbpUsers",
             extraProperties: new Dictionary<string, object?>()
             {
                 {"UserName","admin"}
-            });
+            })).ToEntities<AbpUsers>();
         result.ShouldNotBeNull();
+        result.First().UserName.ShouldBe("admin");
 
 
     }
