@@ -24,7 +24,7 @@ public class AzureAIChatProvider:ChatProviderBase,ITransientDependency
         var endpoint = new Uri(await AzureSettingConfiguration.GetEndpointAsync());
         var credential = new AzureKeyCredential(await AzureSettingConfiguration.GetApiKeyAsync());
 
-        var client = new ChatCompletionsClient(endpoint, credential, new ChatCompletionsClientOptions());
+        var client = new ChatCompletionsClient(endpoint, credential, new AzureAIInferenceClientOptions());
         List<ChatRequestMessage> chatMessage = new List<ChatRequestMessage>();
         foreach (var message in chatMessages)
         {
@@ -47,7 +47,7 @@ public class AzureAIChatProvider:ChatProviderBase,ITransientDependency
             MaxTokens = maxTokens
         };
 
-        Response<ChatCompletions> response = await client.CompleteAsync(requestOptions);
-        return response.Value.Choices[0].Message.Content;
+        Response<ChatCompletions> response = await client.CompleteAsync(requestOptions, cancellationToken);
+        return response.Value.Content;
     }
 }
