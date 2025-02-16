@@ -54,7 +54,22 @@ internal class AISettingProvider: SettingDefinitionProvider
         new SettingDefinition(AISettingNames.AzureAI.Model,
                 "gpt-4o-mini",
                 L("DisplayName:AISettingNames.AzureAI.Model"),
-                L("Description:AISettingNames.AzureAI.Model"),true)
+                L("Description:AISettingNames.AzureAI.Model"),true),
+            
+        new SettingDefinition(AISettingNames.DeepSeek.Endpoint,
+            "https://api.deepseek.com",
+            L("DisplayName:AISettingNames.DeepSeek.Endpoint"),
+            L("Description:AISettingNames.DeepSeek.Endpoint"),true),
+
+        new SettingDefinition(AISettingNames.DeepSeek.ApiKey,
+            "api_key",
+            L("DisplayName:AISettingNames.DeepSeek.ApiKey"),
+            L("Description:AISettingNames.DeepSeek.ApiKey"),false),
+
+        new SettingDefinition(AISettingNames.DeepSeek.Model,
+            "deepseek-chat",
+            L("DisplayName:AISettingNames.DeepSeek.Model"),
+            L("Description:AISettingNames.DeepSeek.Model"),true)
             
                 );
     }
