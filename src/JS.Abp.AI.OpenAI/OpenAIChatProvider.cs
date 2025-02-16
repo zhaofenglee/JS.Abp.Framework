@@ -1,7 +1,7 @@
 ﻿using System.Net;
-using OpenAI;
-using OpenAI.Managers;
-using OpenAI.ObjectModels.RequestModels;
+using Betalgo.Ranul.OpenAI;
+using Betalgo.Ranul.OpenAI.Managers;
+using Betalgo.Ranul.OpenAI.ObjectModels.RequestModels;
 using Volo.Abp;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Json;
@@ -67,7 +67,7 @@ public class OpenAIChatProvider:ChatProviderBase,ITransientDependency
         var proxy = await OpenAIConfiguration.GetProxyAsync();
         if (proxy.IsNullOrWhiteSpace())
         {
-            return new OpenAIService(new OpenAiOptions()
+            return new OpenAIService(new OpenAIOptions()
             {
                 ApiKey =  apiKey,
                 BaseDomain = baseDomain,
@@ -88,7 +88,7 @@ public class OpenAIChatProvider:ChatProviderBase,ITransientDependency
             {
                 Timeout = TimeSpan.FromSeconds(240)
             };
-            return new OpenAIService(new OpenAiOptions()
+            return new OpenAIService(new OpenAIOptions()
             {
                 ApiKey =  apiKey,
                 BaseDomain = baseDomain,

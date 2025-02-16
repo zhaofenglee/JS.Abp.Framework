@@ -25,4 +25,11 @@ public class AISettingNames
         public const string ApiKey = "Abp.AI.AzureAI.ApiKey";
         public const string Model = "Abp.AI.AzureAI.Model";
     }
+    
+    public static class DeepSeek
+    {
+        public const string Endpoint  = "Abp.AI.DeepSeek.Endpoint";
+        public const string ApiKey = "Abp.AI.DeepSeek.ApiKey";
+        public const string Model = "Abp.AI.DeepSeek.Model";
+    }
 }
