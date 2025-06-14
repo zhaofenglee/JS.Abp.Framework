@@ -15,7 +15,7 @@
 
     <ItemGroup>
         <PackageReference Include="Volo.Abp.Json.Abstractions" Version="$(VoloAbpPackageVersion)" />
-        <PackageReference Include="Azure.AI.Inference" Version="1.0.0-beta.4" />
+        <PackageReference Include="Azure.AI.Inference" Version="1.0.0-beta.5" />
     </ItemGroup>
 
 </Project>
