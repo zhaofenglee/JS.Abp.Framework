@@ -11,8 +11,7 @@
 
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.4" />
-        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(VoloAbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL.Pomelo" Version="$(VoloAbpPackageVersion)" />
         <ProjectReference Include="..\JS.Abp.FlexDataHub.Abstractions\JS.Abp.FlexDataHub.Abstractions.csproj" />
     </ItemGroup>
 
