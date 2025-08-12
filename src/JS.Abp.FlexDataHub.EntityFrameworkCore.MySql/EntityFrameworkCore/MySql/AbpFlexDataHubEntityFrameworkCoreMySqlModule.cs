@@ -6,7 +6,7 @@ namespace JS.Abp.FlexDataHub.EntityFrameworkCore.MySql;
 
 [DependsOn(
     typeof(AbpFlexDataHubAbstractionModule),
-    typeof(AbpEntityFrameworkCoreMySQLModule)
+    typeof(AbpEntityFrameworkCoreMySQLPomeloModule)
 )]
 public class AbpFlexDataHubEntityFrameworkCoreMySqlModule: AbpModule
 {
