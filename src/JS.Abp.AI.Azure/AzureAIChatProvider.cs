@@ -45,11 +45,11 @@ public class AzureAIChatProvider:ChatProviderBase,ITransientDependency
             Model = modelId,
             Temperature = 1,
         };
-        if (!modelId.Contains("o1"))
+        /*if (!modelId.Contains("o1"))
         {
             //see https://github.com/Azure/azure-sdk-for-net/issues/46545
             requestOptions.MaxTokens = maxTokens; 
-        }
+        }*/
 
         Response<ChatCompletions> response = await client.CompleteAsync(requestOptions, cancellationToken);
         return response.Value.Content;
