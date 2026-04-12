@@ -5,15 +5,15 @@
 @inherits Modal
 @inject IStringLocalizer<AbpUiResource> L
 
-<Modal @ref="_modal" Closing="@ClosingModal">
-    <ModalContent Centered="true">
+<Modal @ref="_modal" Closing="@ClosingModal" Centered="true">
+    <ModalContent>
         <Form id="ImportFileForm">
             <ModalHeader>
                 <ModalTitle>@L["UploadFile"]</ModalTitle>
                 <CloseButton Clicked="CloseModal" />
             </ModalHeader>
             <ModalBody>
-                <FileEdit @ref="@fileEdit" Filter="@Filter" AutoReset="false" Changed="@OnChanged" />
+                <FileInput @ref="@fileEdit" Filter="@Filter" AutoReset="false" Changed="@OnChanged" />
             </ModalBody>
             <ModalFooter>
                  <Button Color="Color.Secondary"
@@ -41,7 +41,7 @@
     public EventCallback<byte[]> Changed { get; set; }
     [Parameter]
     public EventCallback OnDownloadTemplateFile { get; set; }
-    FileEdit fileEdit;
+    FileInput fileEdit;
     
     public virtual async Task OpenAsync()
     {
